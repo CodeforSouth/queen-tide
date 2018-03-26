@@ -11,5 +11,9 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require turbolinks
+// require turbolinks
 //= require_tree .
+
+function initMap() {
+    console.log("hi");
+}

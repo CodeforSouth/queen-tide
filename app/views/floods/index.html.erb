@@ -1,0 +1,17 @@
+<%= render partial: "navbar" %>
+
+<% @floods.each do |flood| %>
+    <div>
+        <span><%= flood.first_name %></span>
+        <span><%= flood.last_name %></span>
+        <span><%= flood.email %></span>
+        <span><%= flood.description %></span>
+        <span><%= flood.latitude %></span>
+        <span><%= flood.longitude %></span>
+        <% flood.attachments.each do |attachment|%>
+            <img src="<%= attachment.media.url%>"  style="width: 150px"/>
+        <% end %>
+    </div>
+<% end %>
+
+<%= link_to "New Flood", new_flood_path %>

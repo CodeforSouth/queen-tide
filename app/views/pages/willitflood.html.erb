@@ -1,0 +1,4 @@
+<%= render partial: "navbar" %>
+<div id="flood-calendar-map"></div>
+<%= javascript_include_tag "//maps.googleapis.com/maps/api/js?libraries=places&key=#{ENV['google_maps_key']}&callback=initCalendarMap",
+                             'defer'=>true, 'async'=>true %>

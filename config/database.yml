@@ -80,6 +80,7 @@ test:
 #
 production:
   <<: *default
-  database: queen-tide_production
-  username: queen-tide
-  password: <%= ENV['QUEEN-TIDE_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
+  #database: queen-tide_production
+  #username: queen-tide
+  #password: <%= ENV['QUEEN-TIDE_DATABASE_PASSWORD'] %>

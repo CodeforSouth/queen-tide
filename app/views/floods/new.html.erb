@@ -20,7 +20,7 @@
     <br />
      <%= f.fields_for :attachments do |a| %>
         <%= a.label :media, "Upload Images and Videos", class: 'flood-label' %>
-        <%= a.file_field :media, as: :file, class: "form-file-input", multiple: true %>
+        <%= a.file_field :media, as: :file, class: "form-file-input"%>
     <% end %>
     <%= f.submit "Submit Report", class: "flood-form-submit", data: { confirm: 'Thanks for your submission!' } %>
 <% end %>

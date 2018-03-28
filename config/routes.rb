@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get "/willitflood" => "pages#show", page: "willitflood"
   get "/floodform" => "floods#new"
 
-  resources :floods
+  resources :floods, only: [:new, :create, :index]
+  resources :tide_predictions, only: [:index]
 
 end

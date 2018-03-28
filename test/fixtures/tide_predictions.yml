@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  station: 1
+  month: 1
+  month_data: MyText
+  year: 1
+
+two:
+  station: 1
+  month: 1
+  month_data: MyText
+  year: 1

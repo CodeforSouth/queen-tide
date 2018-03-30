@@ -1,11 +1,12 @@
 function initCalendarMap() {
+    getDistanceFromLatLonInMiles();
     var floodMap = new google.maps.Map(
         document.getElementById("flood-calendar-map"),
         {
             center: { lat: 25.7823072, lng: -80.3010434 },
             disableDefaultUI: true,
-            zoom: 12
-
+            zoom: 12,
+            backgroundColor: "transparent"
         }
     );
 
@@ -25,9 +26,12 @@ function initCalendarMap() {
         if (place.geometry) {
             if (place.geometry.viewport === undefined) map.setZoom(17);
 
-            floodMap.setCenter(place.geometry.location); // Centers Map on location
+            var location = place.geometry.location;
+
+            floodMap.setCenter(location); // Centers Map on location
             floodMap.fitBounds(place.geometry.viewport);
-            marker.setPosition(place.geometry.location); // Moves Marker to Location
+            marker.setPosition(location); // Moves Marker to Location
+            drawCalendar(location.lat(), location.lng());
         }
     });
 }
@@ -48,13 +52,49 @@ function clickMap(marker, geocoder, clickEvent) {
                 lat: lat,
                 lng: lng,
                 address: data[0].formatted_address
-            }
-            fillInput(locationData);
+            };
+            //fillInput(locationData);
         }
     );
+
+    drawCalendar(lat, lng);
 
     marker.setPosition({
         lat: lat,
         lng: lng
     });
 }
+
+function drawCalendar(lat, lng) {
+    var location = {
+        lat: lat,
+        lng: lng
+    };
+    var closestStation = findClosestStation(stations, lat, lng);
+    var distance = closestStation.distance.toPrecision(2);
+
+    getElevation(location, function(elevation) {
+        //madComposer(elevation, distance);
+        //console.log(elevation);
+    });
+
+    loadData(closestStation.id);
+}
+
+
+function loadData (mystation) {
+    var xmlhttp = new XMLHttpRequest();
+    var span = 12;
+    xmlhttp.open("GET", "../tide_predictions?station="+mystation+"&span="+span, true);
+    xmlhttp.setRequestHeader("Accept", "application/json");
+    xmlhttp.setRequestHeader("Content-Type", "application/json");
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState === 4 && this.status === 200) {
+        const response = JSON.parse(this.responseText);
+        var months = parseData(response);
+        renderCalendar(months);
+      }
+    };
+    xmlhttp.send();
+  }
+  

@@ -1,0 +1,112 @@
+.calendar-wrapper {
+    width: 100%;
+    height: calc(100% - 2em - 20px);
+    position: absolute;
+    top: calc(2em + 20px);
+    left: 0;
+    background: transparent;
+    z-index: 2;
+    box-sizing: border-box;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calendar {
+    width: 800px;
+    max-width: 95%;
+    max-height: 80%;
+    overflow: auto;
+    background-color: white;
+    pointer-events: all;
+    display: flex;
+    flex-flow: row wrap;
+    padding: 1em;
+    font-size: 0.9em;
+}
+
+.calendar-month {
+    border: 1px solid gray;
+    flex: 1 1 calc(100% / 4);
+    max-width: calc(100%/3 - 20px);
+    margin: 5px;
+    padding: 5px;
+}
+
+.month-name {
+    width: 100%;
+    margin: 0;
+    text-align: center;
+}
+
+.month-header {
+    width: 100%;
+}
+
+.month-week {
+    width: 100%;
+}
+
+.week-day {
+    font-weight: bold;
+    font-family: monospace;
+    text-transform: uppercase;
+}
+
+.week-day,
+.month-day {
+    width: calc(100% / 7 - 4px);
+    text-align: center;
+    display: inline-block;
+    text-align: center;
+    padding: 10px 0;
+    border-radius: 5px;
+    margin: 2px;
+}
+
+.month-day {
+    cursor: pointer;
+}
+
+.non-month {
+    background-color: lightgray;
+    color: darkgray;
+}
+
+.no-tides {
+}
+
+.one-tide {
+    background-color: paleturquoise;
+}
+
+.two-tides {
+    background-color: turquoise;
+}
+
+.highest-in-month {
+    background-color: darkcyan;
+}
+
+.calendar.hidden {
+    display: none;
+}
+
+.floating-label {
+    position: absolute;
+    transition: opacity 1s;
+    opacity: 1;
+    border: thin solid #333;
+    background-color: #161616;
+    border-radius: 5px;
+    padding: 1%;
+    color: #fff;
+    font-size: 2vw Arial;
+    z-index: 10;
+}
+
+.hidden {
+    transition: opacity 1s;
+    opacity: 0;
+}

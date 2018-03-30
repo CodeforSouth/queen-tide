@@ -1,4 +1,69 @@
 <%= render partial: "navbar" %>
-<div id="flood-calendar-map"></div>
+<div id="flood-calendar-map" class="map"></div>
 <%= javascript_include_tag "//maps.googleapis.com/maps/api/js?libraries=places&key=#{ENV['google_maps_key']}&callback=initCalendarMap",
                              'defer'=>true, 'async'=>true %>
+
+<div class="calendar-wrapper">
+<div id="calendar" class="calendar hidden"></div>
+</div>
+
+<div id="floating-label" class="floating-label"></div>
+
+<!--
+<div id="floating-label" class="floating-label hidden"></div>
+<main>
+  <header>
+    <div class="container">
+      <h1 class="full-width">Will it Flood?</h1>
+      <h4>
+        Enter your address in the map. A calendar of high tides for the nearest NOAA tide monitoring station will appear. Dates
+        in blue are at highest risk. Click or roll over to see time & depth.
+      </h4>
+      <form action="">
+        <label>Highlight tides greater than </label>
+        <select id="kingme" name="kingchooser">
+          <option name="2.5" value="2.5">2.5 feet</option>
+          <option name="2.6" value="2.6"> 2.6 feet </option>
+          <option name="2.8" value="2.8"> 2.8 feet </option>
+          <option name="3.0" value="3.0"> 3.0 feet </option>
+          <option name="3.2" value="3.2"> 3.2 feet </option>
+          <option name="3.4" value="3.4"> 3.4 feet </option>
+          <option name="3.6" value="3.6"> 3.6 feet </option>
+          <option name="3.8" value="3.8"> 3.8 feet </option>
+          <option name="4.0" value="4.0"> 4.0 feet </option>
+          <option name="4.2" value="4.2"> 4.2 feet </option>
+          <option name="4.4" value="4.4"> 4.4 feet </option>
+          <option name="4.6" value="4.6"> 4.6 feet </option>
+          <option name="4.8" value="4.8"> 4.8 feet </option>
+          <option name="5.0" value="5.0"> 5.0 feet </option>
+        </select>
+      </form> </br>
+    </div>
+  </header>
+  <input id="pac-input" class="controls" placeholder="Enter your address">
+  <div id="map"></div>
+  <div class="container">
+      <div>
+        <p hidden id="leyend" class="leyendText" > Risk Level  &nbsp &nbsp
+        <span class="square"></span> Tides < 3.0 ft &nbsp &nbsp  
+        <span class="square low"></span> Tides > 3.0 ft &nbsp &nbsp 
+        <span class="square med"></span> Tides < 8.0 ft &nbsp &nbsp
+        <span class="square high"></span> Tides >= 8.0 ft  
+        </p>
+      </div>
+    <h2 id="station"></h2>
+    <p id="madlib"></p>
+    <div id="calendar">
+      
+    </div>
+  </div>
+  <footer>
+    <div class="container">
+      <div style="display: flex;align-items: center;justify-content: center;">
+        <img src="willitflood/images/carta.png" width="112" height="100" alt="CARTA-FIU" />
+        <img src="willitflood/images/cfm.png" width="160" height="100" alt="CODE FOR MIAMI" />
+      </div>
+    </div>
+  </footer>
+  <p id="tooltip" class="tooltip hidden"></p>
+-->

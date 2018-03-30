@@ -40,8 +40,11 @@ gem 'devise'
 gem 'figaro'
 #Automatically add vendor prefixes to CSS (requires nodejs on Windows)
 gem "autoprefixer-rails"
-#User Paperclip for attachments
+#Use Paperclip for attachments
 gem "paperclip", "~> 6.0.0"
+#Use Moment for date related operations in "Will It Flood"
+gem 'momentjs-rails'
+
 
 #Add heroku needed gem
 group :production do

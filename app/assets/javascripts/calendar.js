@@ -40,7 +40,7 @@ function calendarize(yearData) {
         for (var i = startWeek; i <= endWeek; i++) {
             var week = month.week(i);
             var days = [];
-            for (let weekDay = 0; weekDay < 7; weekDay++) {
+            for (var weekDay = 0; weekDay < 7; weekDay++) {
                 var day = week.weekday(weekDay);
                 var inMonth = day.month() === index;
                 var date = day.date();

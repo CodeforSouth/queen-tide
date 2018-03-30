@@ -47,7 +47,7 @@ function getDistanceFromLatLonInMiles(lat1, lon1, lat2, lon2) {
  * @return {{ id: String, distance: Number }} Station
  */
 function findClosestStation (stations, latitude, longitude) {
-  return stations.map( (station) => {
+  return stations.map( function(station) {
     var distance = getDistanceFromLatLonInMiles(station[2], station[3], latitude, longitude);
     return {
       id: station[1], name: station[0],

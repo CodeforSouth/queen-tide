@@ -1,11 +1,11 @@
 "use strict";
 
 function parseData(predictions) {
-    const months = [];
+    var months = [];
     predictions.forEach(function(prediction) {
-        const index = prediction.zeroBasedMonth;
-        const tides = prediction.monthData.map(function(day) {
-            const tide = {
+        var index = prediction.zeroBasedMonth;
+        var tides = prediction.monthData.map(function(day) {
+            var tide = {
                 firstTide: {
                     time: day[0][0],
                     level: Number(day[0][1])

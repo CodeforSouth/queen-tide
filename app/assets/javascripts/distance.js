@@ -13,7 +13,7 @@
  * @return {Number} The distance between the to points
  */
 function getDistanceFromLatLonInMiles(lat1, lon1, lat2, lon2) {
-  const RADIUS_OF_EARTH = 3959;
+  var RADIUS_OF_EARTH = 3959;
 
   var degrees2radians = function(degrees) {
     return degrees * (Math.PI / 180);

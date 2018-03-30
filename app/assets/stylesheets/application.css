@@ -26,7 +26,6 @@
  .map {
     width: 100%;
     height: calc(100% - 2em - 20px);
-    background-image: url("map-background.png");
     margin: 0;
     padding: 0;
     background-image: url("map-background.png");

@@ -90,7 +90,7 @@ function loadData (mystation) {
     xmlhttp.setRequestHeader("Content-Type", "application/json");
     xmlhttp.onreadystatechange = function() {
       if (this.readyState === 4 && this.status === 200) {
-        const response = JSON.parse(this.responseText);
+        var response = JSON.parse(this.responseText);
         var months = parseData(response);
         renderCalendar(months);
       }

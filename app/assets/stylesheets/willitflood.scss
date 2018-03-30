@@ -15,6 +15,7 @@
 
 .calendar {
     width: 800px;
+    transition: max-height 5s;
     max-width: 95%;
     max-height: 80%;
     overflow: auto;
@@ -91,6 +92,7 @@
 
 .calendar.hidden {
     display: none;
+    max-height: 0%;
 }
 
 .floating-label {

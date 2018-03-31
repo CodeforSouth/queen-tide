@@ -1,5 +1,4 @@
 function initCalendarMap() {
-    getDistanceFromLatLonInMiles();
     var floodMap = new google.maps.Map(
         document.getElementById("flood-calendar-map"),
         {

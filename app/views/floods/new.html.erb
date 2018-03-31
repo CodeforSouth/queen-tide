@@ -1,12 +1,17 @@
 <%= render partial: "navbar" %>
 <div id="flood-report-map"  class="map"></div>
 
-<%= form_for(@flood, url: floods_path, multipart: true, html: {autocomplete: "off"}) do |f| %>
+<div class="flood-form-wrapper hidden">
+<%= form_for(@flood, url: floods_path, multipart: true, html: {autocomplete: "off", class: "flood-form"}) do |f| %>
+ <%= f.text_field :latitude, placeholder: 'Latitude', class: "flood-form-input" %>
+    <%= f.text_field :longitude, placeholder: 'Longitude', class: "flood-form-input" %>
+    <%= f.text_field :address, placeholder: 'Address', class: "flood-form-input" %>
+    <br />
     <%= f.text_field :first_name, placeholder: 'First Name', class: "flood-form-input" %> 
     <%= f.text_field :last_name, placeholder: 'Last Name', class: "flood-form-input" %>
     <%= f.text_field :email, placeholder: 'E-mail', class: "flood-form-input" %>
     <br />
-    <%= f.text_field :address, placeholder: 'Address', class: "flood-form-input" %>
+
     <%= f.date_field :date_of_report, placeholder: 'Date of Report', :value => Time.now.strftime('%Y-%m-%d'), class: "flood-form-input" %>
     
     <%= text_area :flood, :description, class: "flood-form-textarea" %>
@@ -14,10 +19,8 @@
     
     
     
-     <%= f.text_field :latitude, placeholder: 'Latitude', class: "flood-form-input" %>
-    <br />
-     <%= f.text_field :longitude, placeholder: 'Longitude', class: "flood-form-input" %>
-    <br />
+    
+    
      <%= f.fields_for :attachments do |a| %>
         <%= a.label :media, "Upload Images and Videos", class: 'flood-label' %>
         <%= a.file_field :media, as: :file, class: "form-file-input"%>
@@ -25,5 +28,5 @@
     <%= f.submit "Submit Report", class: "flood-form-submit", data: { confirm: 'Thanks for your submission!' } %>
 <% end %>
 
- <%= javascript_include_tag "//maps.googleapis.com/maps/api/js?libraries=places&key=#{ENV['google_maps_key']}&callback=initFloodMap",
+ <%= javascript_include_tag "//maps.googleapis.com/maps/api/js?libraries=places&key=#{ENV['google_maps_key']}&callback=initReportMap",
                              'defer'=>true, 'async'=>true %>

@@ -1,7 +1,7 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
-function initFloodMap() {
+function initReportMap() {
     var floodMap = new google.maps.Map(
         document.getElementById("flood-report-map"),
         {
@@ -21,7 +21,7 @@ function initFloodMap() {
         map: floodMap
     });
 
-    floodMap.addListener("click", clickMap.bind(null, marker, geocoder));
+    floodMap.addListener("click", clickReportMap.bind(null, marker, geocoder));
     autocomplete.addListener("place_changed", function() {
         var place = autocomplete.getPlace();
         input.value = "";
@@ -40,6 +40,7 @@ function initFloodMap() {
 }
 
 function fillInput(locationData){
+    var wrapper = document.querySelector(".flood-form-wrapper");
     var latitude = document.querySelector("input#flood_latitude");
     var longitude = document.querySelector("input#flood_longitude");
     var address = document.querySelector("input#flood_address");
@@ -55,9 +56,11 @@ function fillInput(locationData){
     if(address) {
         address.value = locationData.address;
     }
+
+    wrapper.classList.remove("hidden");
 }
 
-function clickMap(marker, geocoder, clickEvent) {
+function clickReportMap(marker, geocoder, clickEvent) {
     var lat = clickEvent.latLng.lat();
     var lng = clickEvent.latLng.lng();
 

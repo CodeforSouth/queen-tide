@@ -8,6 +8,11 @@
     align-items: center;
     height: 2em;
     h1 {
+        color: transparent;
+        background-image: url("will-it-flood.png");
+        background-position: 0 center;
+        background-size: contain;
+        background-repeat: no-repeat;
         margin: 0;
         flex: 1;
         a {
@@ -18,6 +23,10 @@
     nav {
         flex: 3;
         text-align: right;
+        a {
+            font-weight: bold;
+            font-size: 1.25em;
+        }
     }
 
     a {

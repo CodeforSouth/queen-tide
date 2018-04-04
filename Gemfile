@@ -9,8 +9,7 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.5'
-# Use postgresql as the database for Active Record
-gem 'pg', '>= 0.18', '< 2.0'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -44,16 +43,19 @@ gem "autoprefixer-rails"
 gem "paperclip", "~> 6.0.0"
 #Use Moment for date related operations in "Will It Flood"
 gem 'momentjs-rails'
-# Use sqlite3 as the database for Development
-gem 'sqlite3'
+
 
 
 #Add heroku needed gem
 group :production do
+  # Use postgresql as the database for Active Record IN PRODUCTION
+  gem 'pg', '>= 0.18', '< 2.0'
   gem 'rails_12factor'
 end
 
 group :development, :test do
+  # Use sqlite3 as the database for Development & Testing
+  gem 'sqlite3'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
@@ -62,6 +64,7 @@ group :development, :test do
 end
 
 group :development do
+
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'

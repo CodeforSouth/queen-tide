@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.3.1'
+ruby '2.5.0'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -44,6 +44,8 @@ gem "autoprefixer-rails"
 gem "paperclip", "~> 6.0.0"
 #Use Moment for date related operations in "Will It Flood"
 gem 'momentjs-rails'
+# Use sqlite3 as the database for Development
+gem 'sqlite3'
 
 
 #Add heroku needed gem

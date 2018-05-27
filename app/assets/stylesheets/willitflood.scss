@@ -1,6 +1,6 @@
 .calendar-wrapper {
     width: 100%;
-    height: calc(100% - 2em - 20px);
+    height: calc(95% - 2em - 20px);
     position: absolute;
     top: calc(2em + 20px);
     left: 0;
@@ -114,3 +114,76 @@
     
 }
 
+input.tides {
+    width: 50%;
+    font-size: 2em;
+}
+
+
+.square.low {
+	width: 1rem;
+	height: 1rem;
+    background: white;
+    border: thin black solid;
+    display: inline-block;
+    padding: 0;
+}
+
+.square.med {
+	width: 1rem;
+	height: 1rem;
+    background: turquoise;
+    border: thin black solid;
+    display: inline-block;
+    padding: 0;
+}
+
+.square.high {
+	width: 1rem;
+	height: 1rem;
+    background: darkcyan;
+    border: thin black solid;
+    display: inline-block;
+    padding: 0;
+}
+
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    display: inline;
+    list-style: none;
+    padding-right: 5%;
+}
+
+#legend {
+height: 5%;
+
+}
+
+
+#legend ul {
+    text-align: center;
+    padding-top: 1%;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.calendar-map {
+    width: 100%;
+    height: calc(95% - 2em - 20px);
+    margin: 0;
+    padding: 0;
+    background-image: url("map-background.png");
+    background-size: 200px 200px;
+    z-index: 1;
+}
+
+h2 {
+   text-align: center;
+   margin: 1%;
+   font-size: 1.25em;
+}

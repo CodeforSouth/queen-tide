@@ -1,13 +1,26 @@
 <%= render partial: "navbar" %>
-<div id="flood-calendar-map" class="map"></div>
+<div id="flood-calendar-map" class="calendar-map"></div>
 <%= javascript_include_tag "//maps.googleapis.com/maps/api/js?libraries=places&key=#{ENV['google_maps_key']}&callback=initCalendarMap",
                              'defer'=>true, 'async'=>true %>
 
 <div class="calendar-wrapper">
 <div id="calendar" class="calendar hidden"></div>
 </div>
+<div id="floating-label" class="floating-label hidden"></div>
 
-<div id="floating-label" class="floating-label"></div>
+<div id="legend">
+
+<ul id="leyend" class="leyendText">
+  <li> Risk Level</li>
+  <li class="square low"> </li> 
+  <li>Tides &lt; 2.5 ft</li>  
+  <li class="square med"> </li> 
+  <li>Tides 	&gt;= 2.5 ft</li>
+  <li class="square high"> </li> 
+  <li>Highest Monthly Tide</li>   
+  </ul>
+  <h2 id="station"></h2>
+  </div>
 
 
 <!-- OLD WILL IT FLOOD HTML CODE HERE FOR REFERENCE -->

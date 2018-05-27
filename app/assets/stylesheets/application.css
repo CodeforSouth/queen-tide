@@ -31,3 +31,13 @@
     background-size: 200px 200px;
     z-index: 1;
 }
+
+.calendar-map {
+    width: 100%;
+    height: calc(90% - 2em - 20px);
+    margin: 0;
+    padding: 0;
+    background-image: url("map-background.png");
+    background-size: 200px 200px;
+    z-index: 1;
+}

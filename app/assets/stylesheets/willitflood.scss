@@ -132,11 +132,21 @@ input.tides {
 .square.med {
 	width: 1rem;
 	height: 1rem;
+    background: paleturquoise;
+    border: thin black solid;
+    display: inline-block;
+    padding: 0;
+}
+
+.square.med2 {
+	width: 1rem;
+	height: 1rem;
     background: turquoise;
     border: thin black solid;
     display: inline-block;
     padding: 0;
 }
+
 
 .square.high {
 	width: 1rem;

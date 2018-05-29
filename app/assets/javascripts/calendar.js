@@ -78,7 +78,7 @@ function getHighestTide(monthData) {
 
 function parseTideData(tideData, highestTide) {
     var floodingType;
-    var reference = window.king || 2;
+    var reference = window.king || 2.5;
     var allTides = tideData.secondTide
         ? [tideData.firstTide, tideData.secondTide]
         : [tideData.firstTide];

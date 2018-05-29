@@ -10,6 +10,8 @@ function initCalendarMap() {
     );
 
     var input = document.createElement("input");
+    input.setAttribute("placeholder", "Please enter location or click on the map.");
+    input.classList.add("tides");
     var autocomplete = new google.maps.places.Autocomplete(input);
     floodMap.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
@@ -76,10 +78,14 @@ function drawCalendar(lat, lng) {
         //madComposer(elevation, distance);
         //console.log(elevation);
     });
-
+    stationID(closestStation.name);
     loadData(closestStation.id);
 }
 
+function stationID(name){
+    var station = document.getElementById("station");
+    station.textContent = "Your closest tide station is " + name;
+}
 
 function loadData (mystation) {
     var xmlhttp = new XMLHttpRequest();

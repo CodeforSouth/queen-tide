@@ -13,25 +13,25 @@
  * @return {Number} The distance between the to points
  */
 function getDistanceFromLatLonInMiles(lat1, lon1, lat2, lon2) {
-  const RADIUS_OF_EARTH = 3959;
+  var RADIUS_OF_EARTH = 3959;
 
-  function degrees2radians(degrees) {
+  var degrees2radians = function(degrees) {
     return degrees * (Math.PI / 180);
   }; // Degrees to Radians
 
-  const  firstLatRadians = degrees2radians(lat1);
-  const secondLatRadians = degrees2radians(lat2);
-  const   halfLatRadians = degrees2radians(lat2 - lat1) / 2; // Latitude to Radians Divided by 2
-  const   halfLonRadians = degrees2radians(lon2 - lon1) / 2; // Longitude to Radians Divided by 2
+  var  firstLatRadians = degrees2radians(lat1);
+  var secondLatRadians = degrees2radians(lat2);
+  var   halfLatRadians = degrees2radians(lat2 - lat1) / 2; // Latitude to Radians Divided by 2
+  var   halfLonRadians = degrees2radians(lon2 - lon1) / 2; // Longitude to Radians Divided by 2
 
   // The square of half the chord length between the points
-  const lengthSquared =
+  var lengthSquared =
     Math.sin(halfLatRadians) * Math.sin(halfLatRadians) +
     Math.cos(firstLatRadians) * Math.cos(secondLatRadians) *
     Math.sin(halfLonRadians) * Math.sin(halfLonRadians);
 
   // The angular distance in radians
-  const angular_distance_in_radians =
+  var angular_distance_in_radians =
     2 * Math.atan2(Math.sqrt(lengthSquared), Math.sqrt(1 - lengthSquared));
 
   return RADIUS_OF_EARTH * angular_distance_in_radians // Distance in KM
@@ -48,7 +48,7 @@ function getDistanceFromLatLonInMiles(lat1, lon1, lat2, lon2) {
  */
 function findClosestStation (stations, latitude, longitude) {
   return stations.map( function(station) {
-    const distance = getDistanceFromLatLonInMiles(station[2], station[3], latitude, longitude);
+    var distance = getDistanceFromLatLonInMiles(station[2], station[3], latitude, longitude);
     return {
       id: station[1], name: station[0],
       lat: station[2], lng: station[3],
@@ -66,9 +66,9 @@ function findClosestStation (stations, latitude, longitude) {
  * @param {number} theElevation - The elevation in a location
  */
 function madElevate (theElevation) {
-  const lowElevation = theElevation < 3;
-  const averageElevation = theElevation < 8;
-  const highElevation = theElevation >= 8;
+  var lowElevation = theElevation < 3;
+  var averageElevation = theElevation < 8;
+  var highElevation = theElevation >= 8;
 
   function elevationLevel() {
     if (lowElevation) return "low";
@@ -116,20 +116,20 @@ function madDistance (distance) {
 }
 
 function madComposer (elevation, distance) {
-  const elevationText = madElevate(elevation);
-  const  distanceText = madDistance(distance);
-  const      madLibEl = document.getElementById("madlib");
+  var elevationText = madElevate(elevation);
+  var  distanceText = madDistance(distance);
+  var      madLibEl = document.getElementById("madlib");
 
   madLibEl.style.display = "block";
   madLibEl.innerText = distanceText +' '+ elevationText;
 }
 
 function getElevation (location, callback) {
-  const elevationService = new google.maps.ElevationService();
+  var elevationService = new google.maps.ElevationService();
   elevationService.getElevationForLocations(
     { locations: [location] }, function ( results, status ) {
       if (status === "OK" && results[0]) {
-        const elevation = (3.28084 * results[0].elevation).toPrecision(2);
+        var elevation = (3.28084 * results[0].elevation).toPrecision(2);
         return callback(elevation)
       }
     }

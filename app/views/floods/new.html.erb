@@ -16,15 +16,26 @@
     
     <%= text_area :flood, :description, class: "flood-form-textarea" %>
     <br />
+
+    <%= f.file_field :close_up, as: :file, class: "form-file-input"%>
+    <%= f.file_field :context, as: :file, class: "form-file-input"%>
+    <br />
+    <!-- DEPTH -->
+    <%= f.number_field :water_depth, class: "flood-form-input" %>
+    <%= f.select :water_depth_units, options_for_select([['Inches',"inches"], ['Centimeters',"centimeters"]]), prompt: "Choose..." %>
+    <%= f.file_field :water_depth_photo, as: :file, class: "form-file-input"%>
+    <br />
     
-    
-    
-    
-    
-     <%= f.fields_for :attachments do |a| %>
-        <%= a.label :media, "Upload Images and Videos", class: 'flood-label' %>
-        <%= a.file_field :media, as: :file, class: "form-file-input"%>
-    <% end %>
+    <!-- SALINITY -->
+    <%= f.number_field :salinity, class: "flood-form-input" %>
+    <%= f.file_field :salinity_photo, as: :file, class: "form-file-input"%>
+    <br />
+
+    <!-- BOTTLE -->
+    <%= f.number_field :bottle_number, class: "flood-form-input" %>
+    <%= f.file_field :bottle_photo, as: :file, class: "form-file-input"%>
+    <br />
+
     <%= f.submit "Submit Report", class: "flood-form-submit", data: { confirm: 'Thanks for your submission!' } %>
 <% end %>
 

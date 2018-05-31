@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180328002253) do
+ActiveRecord::Schema.define(version: 20180531013441) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -51,6 +51,30 @@ ActiveRecord::Schema.define(version: 20180328002253) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "address"
+    t.string "close_up_file_name"
+    t.string "close_up_content_type"
+    t.integer "close_up_file_size"
+    t.datetime "close_up_updated_at"
+    t.string "context_file_name"
+    t.string "context_content_type"
+    t.integer "context_file_size"
+    t.datetime "context_updated_at"
+    t.decimal "water_depth"
+    t.integer "water_depth_units"
+    t.decimal "salinity"
+    t.integer "bottle_number"
+    t.string "water_depth_photo_file_name"
+    t.string "water_depth_photo_content_type"
+    t.integer "water_depth_photo_file_size"
+    t.datetime "water_depth_photo_updated_at"
+    t.string "salinity_photo_file_name"
+    t.string "salinity_photo_content_type"
+    t.integer "salinity_photo_file_size"
+    t.datetime "salinity_photo_updated_at"
+    t.string "bottle_photo_file_name"
+    t.string "bottle_photo_content_type"
+    t.integer "bottle_photo_file_size"
+    t.datetime "bottle_photo_updated_at"
   end
 
   create_table "tide_predictions", force: :cascade do |t|

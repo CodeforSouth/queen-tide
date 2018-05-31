@@ -8,14 +8,13 @@ class FloodsController < ApplicationController
 
   def new
     @flood = Flood.new
-    @flood.attachments.build
   end
 
   def create
     @flood = Flood.new flood_params
     if @flood.save
       flash[:notice] = 'Thank you for contributing data!'
-      redirect_to action: :index
+      redirect_to action: :new
     else
       flash.now[:error] = "Oops. There were errors:\n#{@flood.errors.full_messages.to_sentence}"
       render :new
@@ -33,10 +32,15 @@ class FloodsController < ApplicationController
       :description,
       :latitude,
       :longitude,
-      attachments_attributes: %i[
-        media
-        attachment
-      ]
+      :close_up,
+      :context,
+      :water_depth,
+      :water_depth_units,
+      :water_depth_photo,
+      :salinity,
+      :salinity_photo,
+      :bottle_number,
+      :bottle_photo
     )
   end
 end

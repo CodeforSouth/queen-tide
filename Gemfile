@@ -51,6 +51,7 @@ group :production do
   # Use postgresql as the database for Active Record IN PRODUCTION
   gem 'pg', '>= 0.18', '< 2.0'
   gem 'rails_12factor'
+  gem 'aws-sdk-s3'
 end
 
 group :development, :test do

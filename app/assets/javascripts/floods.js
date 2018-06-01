@@ -21,6 +21,8 @@ function initReportMap() {
         map: floodMap
     });
 
+    cancelButton();
+
     floodMap.addListener("click", clickReportMap.bind(null, marker, geocoder));
     autocomplete.addListener("place_changed", function() {
         var place = autocomplete.getPlace();
@@ -85,4 +87,17 @@ function clickReportMap(marker, geocoder, clickEvent) {
         lat: lat,
         lng: lng
     });
+}
+
+function cancelButton() {
+    const cancel = document.getElementById("cancel");
+    const wrapper = document.querySelector(".flood-form-wrapper");
+
+    if(cancel) {
+        cancel.addEventListener("click", function(event){
+            event.preventDefault();
+            wrapper.classList.add("hidden");
+        })
+    }
+
 }

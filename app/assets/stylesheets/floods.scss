@@ -23,4 +23,14 @@
     background-color: white;
     display: block;
     padding: 1em;
+    box-sizing: border-box;
+    
+    h4 {
+        margin: 0;
+    }
+    textarea {
+        resize: none;
+        width: 100%;
+        min-height: 10em;
+    }
 }

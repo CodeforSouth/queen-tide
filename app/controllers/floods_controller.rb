@@ -11,7 +11,13 @@ class FloodsController < ApplicationController
   end
 
   def create
-    @flood = Flood.new flood_params
+    date = Date.parse flood_params[:date]
+    time = Time.parse flood_params[:time]
+    
+    @flood = Flood.new flood_params.except(:date, :time)
+
+    @flood.date_of_report = DateTime.new(date.year, date.month, date.day, time.hour, time.min, time.sec)
+
     if @flood.save
       flash[:notice] = 'Thank you for contributing data!'
       redirect_to action: :new
@@ -28,7 +34,8 @@ class FloodsController < ApplicationController
       :first_name,
       :last_name,
       :email,
-      :date_of_report,
+      :date,
+      :time,
       :description,
       :latitude,
       :longitude,

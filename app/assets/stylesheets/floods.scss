@@ -12,7 +12,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
     &.hidden {
         display: none;
     }
@@ -55,13 +54,26 @@
     display: block;
     padding: 1em;
     box-sizing: border-box;
-    
+
     h4 {
         margin: 0;
+        text-align: center;
     }
     textarea {
         resize: none;
         width: 100%;
-        min-height: 10em;
+        min-height: 10em;        
     }
+}
+
+
+.address{
+    text-align: center;
+    // margin: 0 40em;
+    width: 100%;
+}
+
+.about{
+    text-align: center;
+    margin: 0 8em;
 }

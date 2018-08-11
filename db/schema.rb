@@ -29,17 +29,6 @@ ActiveRecord::Schema.define(version: 20180531013441) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "attachments", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "media_file_name"
-    t.string "media_content_type"
-    t.integer "media_file_size"
-    t.datetime "media_updated_at"
-    t.integer "flood_id"
-    t.index ["flood_id"], name: "index_attachments_on_flood_id"
-  end
-
   create_table "floods", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"

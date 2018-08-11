@@ -1,5 +1,8 @@
 <%= render partial: "navbar" %>
-<div id="flood-report-map"  class="map"></div>
+<div id="flood-report-map"  class="map">
+
+</div>
+
 
 <div class="flood-form-wrapper hidden">
 <%= form_for(@flood, url: floods_path, multipart: true, html: {autocomplete: "off", class: "flood-form"}) do |f| %>
@@ -7,60 +10,79 @@
     <h4>Address:</h4>
     <%= f.hidden_field :latitude, placeholder: 'Latitude'%>
     <%= f.hidden_field :longitude, placeholder: 'Longitude'%>
-    <%= f.text_field :address, placeholder: 'Address', class: "flood-form-input" %>
+    <%= f.text_field :address, placeholder: 'Address', class: "address" %>
     <hr />
     <h4>About You</h4>
-    <%= f.text_field :first_name, placeholder: 'First Name', class: "flood-form-input" %> 
-    <%= f.text_field :last_name, placeholder: 'Last Name', class: "flood-form-input" %>
-    <%= f.text_field :email, placeholder: 'E-mail', class: "flood-form-input" %>
+    <%= f.text_field :first_name, placeholder: 'First Name', class: "about" %> 
+    <%= f.text_field :last_name, placeholder: 'Last Name', class: "about" %>
+    <%= f.text_field :email, placeholder: 'E-mail', class: "about" %>
     <hr />
-    <h4>Flood Description</h4>
-    <%= f.label :date %>
-    <%= f.date_field :date, placeholder: 'Date of Report', :value => Time.now.strftime('%Y-%m-%d'), class: "flood-form-input" %>
-    <%= f.label :time %>
-    <%= f.time_field :time, placeholder: 'Time of Report', :value => Time.now.strftime('%H:%M:%S'), class: "flood-form-input" %>
-    <br />
-    <%= f.text_area :description, placeholder: "Describe Flood... (optional)", class: "flood-form-textarea" %>
-    <hr />
-    <h4>Flood Images</h4>
-    <%= f.label :close_up %>
-    <%= f.file_field :close_up, as: :file, class: "form-file-input"%>
-    <%= f.label :context %>
-    <%= f.file_field :context, as: :file, class: "form-file-input"%>
-    <hr />
+    
+    <div>
+            <button type="button" class="accordion">Flood Description</button>
+            <div class="panel">
+            <%= f.label :date %>
+            <%= f.date_field :date, placeholder: 'Date of Report', :value => Time.now.strftime('%Y-%m-%d') %>
+            <%= f.label :time %>
+            <%= f.time_field :time, placeholder: 'Time of Report', :value => Time.now.strftime('%H:%M:%S') %>
+            <br />
+            <%= f.text_area :description, placeholder: "Describe Flood... (optional)" %>
+            <hr />
+            </div>
 
-    <!-- DEPTH -->
-    <h4>Water Depth:</h4>
-    <%= f.label :water_depth %>
-    <%= f.number_field :water_depth, class: "flood-form-input" %>
-    <br />
-    <%= f.label :water_depth_units %>
-    <%= f.select :water_depth_units, options_for_select([['Inches',"inches"], ['Centimeters',"centimeters"]]), prompt: "Choose..." %>
-    <br />
-    <%= f.label :water_depth_photo %>
-    <%= f.file_field :water_depth_photo, as: :file, class: "form-file-input"%>
+            <button type="button" class="accordion">Flood Images</button>
+            <div class="panel">
+            <%= f.label :close_up %>
+            <%= f.file_field :close_up, as: :file, class: "form-file-input"%>
+            <%= f.label :context %>
+            <%= f.file_field :context, as: :file, class: "form-file-input"%>
+            <hr />
+            </div>
+            
+            
+            <!-- DEPTH -->
+            <button type="button" class="accordion">Water Depth</button>
+            <div class="panel">
+            <%= f.label :water_depth %>
+            <%= f.number_field :water_depth, class: "flood-form-input" %>
+            <br />
+            <%= f.label :water_depth_units %>
+            <%= f.select :water_depth_units, options_for_select([['Inches',"inches"], ['Centimeters',"centimeters"]]), prompt: "Choose..." %>
+            <br />
+            <%= f.label :water_depth_photo %>
+            <%= f.file_field :water_depth_photo, as: :file, class: "form-file-input"%>
+            <hr />
+            </div>
     
-    <hr />
-    <!-- SALINITY -->
-    <h4>Salinity:</h4>
-    <%= f.label :salinity %>
-    <%= f.number_field :salinity, class: "flood-form-input" %>
-    <br />
-    <%= f.label :salinity_photo %>
-    <%= f.file_field :salinity_photo, as: :file, class: "form-file-input"%>
-    
-    <hr />
-    <!-- BOTTLE -->
-    <h4>Water Sample:</h4>
-    <%= f.label :bottle_number %>
-    <%= f.number_field :bottle_number, class: "flood-form-input" %>
-    <br />
-    <%= f.label :bottle_photo %>
-    <%= f.file_field :bottle_photo, as: :file, class: "form-file-input"%>
-    <br />
+            <!-- SALINITY -->
+            <button type="button" class="accordion">Salinity</button>
+            <div class="panel">
+            <%= f.label :salinity %>
+            <%= f.number_field :salinity, class: "flood-form-input" %>
+            <br />
+            <%= f.label :salinity_photo %>
+            <%= f.file_field :salinity_photo, as: :file, class: "form-file-input"%>
+            <hr />
+            </div>
+
+            <button type="button" class="accordion">Water Sample</button>
+            <div class="panel">
+            <!-- BOTTLE -->
+            <%= f.label :bottle_number %>
+            <%= f.number_field :bottle_number, class: "flood-form-input" %>
+            <br />
+            <%= f.label :bottle_photo %>
+            <%= f.file_field :bottle_photo, as: :file, class: "form-file-input"%>
+            <br />
+            </div>
   
-    <%= f.submit "Submit Report", class: "flood-form-submit", data: { confirm: 'Thanks for your submission!' } %>
-<% end %>
 
+    <%= javascript_include_tag 'accordion' %>
+    </div> 
+
+    <%= f.submit "Submit Report", class: "flood-form-submit", data: { confirm: 'Thanks for your submission!' } %>
+    
+    <% end %>
+    
  <%= javascript_include_tag "//maps.googleapis.com/maps/api/js?libraries=places&key=#{ENV['google_maps_key']}&callback=initReportMap",
                              'defer'=>true, 'async'=>true %>

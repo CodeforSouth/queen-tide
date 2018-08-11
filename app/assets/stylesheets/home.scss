@@ -16,6 +16,7 @@
         margin-top: 10em;
         text-align: center;
 
+
         h1 {
             color: transparent;
             background-image: url("will-it-flood.png");
@@ -23,6 +24,7 @@
             background-repeat: no-repeat;
             font-size: 6em;
             margin: 0;
+            padding-bottom: 60px;
         }
 
         a {
@@ -32,5 +34,140 @@
             font-size: 2em;
             margin: 1em 2em;
         }
+
+        $bg-color: #F1E9DA;
+        $link-text-color: #fff;
+        $button-bg-1: #541388;
+        $button-bg-2: #D90368;
+        $button-bg-3: #104547;
+        $button-bg-4: #4F000B;
+        $button-bg-5: #F28123;
+        $border-radius: 6px;
+        $overlay-color: #fff;
+
+body {
+  background-color: $bg-color;
+  
+  .container {
+    width: 850px;
+    margin: 70px auto 0px auto;
+    text-align: center;
+    
+    h1 {
+      font: {
+        family: 'Droid Serif', serif;
+        weight: 400;
+        style: normal;
+        size: 30px;
+      }
+      margin-bottom: 30px;
+      
+      span {
+        font: {
+          weight: 700;
+          style: italic;
+        }
+        color: #D90368;
+        border-bottom: 2px dashed currentColor;
+      }
     }
+    
+    .button-effect {
+      padding: 30px 0px; 
+      
+      h2 {
+        font: {
+          family: 'Droid Serif', serif;
+          size: 20px;
+        }
+        margin-bottom: 40px;
+      }
+      
+      a {
+        margin-right: 17px;
+        
+        &:nth-child(2) {
+          background-color: $button-bg-1;
+        }
+        
+        &:nth-child(3) {
+          background-color: $button-bg-2;
+        }
+        
+        &:nth-child(4) {
+          background-color: $button-bg-3;
+        }
+        
+        &:nth-child(5) {
+          background-color: $button-bg-4;
+        }
+        
+        &:nth-child(6) {
+          background-color: $button-bg-5;
+        }
+        
+        &:last-child {
+          margin-right: 0px;
+        }
+      }
+    }
+  }
+}
+
+/* button styles !!!YOU NEED THEM 
+!!!ALSO YOU NEED TO ADD FONTWESOME */
+  
+    .effect {
+      text-align: center;
+      display: inline-block;
+      position: relative;
+      text-decoration: none;
+      color: $link-text-color;
+      text-transform: capitalize;
+      background-color: #3232ff;
+      -webkit-text-stroke-width: .5px;
+      -webkit-text-stroke-color: black;
+      opacity: 0.7;
+      font: {
+        family: 'Roboto', sans-serif; /* put your font-family */
+        size: 18px;
+      }
+      padding: 20px 0px;
+      width: 150px;
+      border-radius: 25px;
+      overflow: hidden;
+    }
+
+    .effect.effect-5 {
+        transition: all 0.2s linear 0s;
+      
+      &:before {
+        content: "\f054";
+        font-family: FontAwesome;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        background-color: #000099;
+        top: 0;
+        left: 0px;
+        height: 100%;
+        width: 30px;
+        border-radius: 0 50% 50% 0;
+        transform: scale(0,1);
+        transform-origin: left center;
+        transition: all 0.2s linear 0s;
+      }
+      
+       &:hover {
+        text-indent: 30px;
+        
+        &:before {
+          transform: scale(1,1);
+          text-indent: 0;
+        }
+      }
+    }
+
+  }
 }

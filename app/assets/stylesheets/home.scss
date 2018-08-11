@@ -124,10 +124,10 @@ body {
       text-decoration: none;
       color: $link-text-color;
       text-transform: capitalize;
-      background-color: #5151e0;
-      -webkit-text-stroke-width: .5px;
+      background-color: #020231;
+      -webkit-text-stroke-width: .7px;
       -webkit-text-stroke-color: black;
-      opacity: 0.7;
+      opacity: .9;
       font: {
         family: 'Roboto', sans-serif; /* put your font-family */
         size: 18px;
@@ -148,7 +148,7 @@ body {
         align-items: center;
         justify-content: center;
         position: absolute;
-        background-color: #000099;
+        background-color: #2f339c;
         top: 0;
         left: 0px;
         height: 100%;

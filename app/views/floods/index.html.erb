@@ -1,24 +1,47 @@
 <%= render partial: "navbar" %>
-
+<table>
+    <thead>
+        <tr>
+        <th>first_name</th>
+        <th>last_name</th>
+        <th>email</th>
+        <th>description</th>
+        <th>latitude</th>
+        <th>longitude</th>
+        <th>date_of_report</th>
+        <th>close_up</th>
+        <th>context</th>
+        <th>water_depth</th>
+        <th>water_depth_units</th>
+        <th>water_depth_photo</th>
+        <th>salinity</th>
+        <th>salinity_photo</th>
+        <th>bottle_number</th>
+        <th>bottle_photo</th>
+        </tr>
+    </thead>
+    <tbody>
 <% @floods.each do |flood| %>
-    <div>
-        <span><%= flood.first_name %></span>
-        <span><%= flood.last_name %></span>
-        <span><%= flood.email %></span>
-        <span><%= flood.description %></span>
-        <span><%= flood.latitude %></span>
-        <span><%= flood.longitude %></span>
-        <span><%= flood.date_of_report %></span>
-        <img src="<%= flood.close_up(:thumb)%>"  style="width: 150px"/>
-        <img src="<%= flood.context(:thumb)%>"  style="width: 150px"/>
-        <span><%= flood.water_depth %></span>
-        <span><%= flood.water_depth_units %></span>
-        <img src="<%= flood.water_depth_photo(:thumb)%>"  style="width: 150px"/>
-        <span><%= flood.salinity %></span>
-        <img src="<%= flood.salinity_photo(:thumb)%>"  style="width: 150px"/>
-        <span><%= flood.bottle_number %></span>
-        <img src="<%= flood.bottle_photo(:thumb)%>"  style="width: 150px"/>
-    </div>
+    <tr>
+        <td><%= flood.first_name %></td>
+        <td><%= flood.last_name %></td>
+        <td><%= flood.email %></td>
+        <td><%= flood.description %></td>
+        <td><%= flood.latitude %></td>
+        <td><%= flood.longitude %></td>
+        <td><%= flood.date_of_report %></td>
+        <td><img src="<%= flood.close_up(:thumb)%>"  style="width: 150px"/></td>
+        <td><img src="<%= flood.context(:thumb)%>"  style="width: 150px"/></td>
+        <td><%= flood.water_depth %></td>
+        <td><%= flood.water_depth_units %></td>
+        <td><img src="<%= flood.water_depth_photo(:thumb)%>"  style="width: 150px"/></td>
+        <td><%= flood.salinity %></td>
+        <td><img src="<%= flood.salinity_photo(:thumb)%>"  style="width: 150px"/></td>
+        <td><%= flood.bottle_number %></td>
+        <td><img src="<%= flood.bottle_photo(:thumb)%>"  style="width: 150px"/></td>
+    </tr>
 <% end %>
+</tbody>
+</table>
 
 <%= link_to "New Flood", new_flood_path %>
